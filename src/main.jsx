@@ -9,6 +9,7 @@ import AddProducts from "./Pages/AddProducts.jsx";
 import MyCarts from "./Pages/MyCarts.jsx";
 import Login from "./Pages/Login.jsx";
 import Register from "./Pages/Register.jsx";
+import AuthProvider from "./Provider/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,16 +34,19 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
-      // {
-      //   path: "/register",
-      //   element: <Register></Register>,
-      // },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+
+    </AuthProvider>
   </React.StrictMode>
 );

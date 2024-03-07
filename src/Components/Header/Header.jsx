@@ -3,11 +3,13 @@ import logo from '../Header/logo.png.avif'
 
 const Header = () => {
   const links = (
-    <div className=" space-x-5 font-extrabold text-white">
+    <div className=" space-x-5 font-extrabold text-white ">
       <Link to="/">Home</Link>
       <Link to="/addProducts">AddProducts</Link>
-      <Link to="/myCarts">My carts</Link>
+      <Link to="/myCarts">MyCarts</Link>
+      <Link to="/register">Register</Link>
       <Link to="/login">Login</Link>
+
     </div>
   );
   return (
@@ -33,7 +35,7 @@ const Header = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 gap-5 "
+              className="menu menu-sm dropdown-content  shadow bg-green-600  gap-5 "
             >
               {links}
             </ul>
@@ -41,7 +43,9 @@ const Header = () => {
           <img className="w-12 rounded-full" src={logo} alt="" />
         </div>
         <div className="navbar-center  hidden lg:flex">
-          <ul className="menu menu-horizontal gap-5 px-1">{links}</ul>
+          <ul className="menu menu-horizontal  px-1">
+            {links}
+            </ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Button</a>
