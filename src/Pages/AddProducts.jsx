@@ -1,6 +1,7 @@
+import { json } from "react-router-dom";
+import Swal from "sweetalert2";
+
 const AddProducts = () => {
-
-
 
     const handleProducts=event=>{
         event.preventDefault();
@@ -15,9 +16,27 @@ const AddProducts = () => {
         const newProducts ={name,brand,price,description,type,details,photo};
         console.log(newProducts);
 
+        fetch('http://localhost:5000/Product',{
+          method:'POST',
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify(newProducts)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+            if(data.insertedId){
+              Swal.fire({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success"
+              });
+            }
+            })
+  
+        
 
     }
-
 
   return (
     <div className="bg-green-200 m-6 p-24 rounded-lg ">
@@ -68,9 +87,21 @@ const AddProducts = () => {
             </label>
             <input
               type="text"
-              placeholder="Description"
+              placeholder=""
               name="description"
-              className="input input-bordered  "
+              className="py-8 p-2  rounded-md  "
+              required
+            />
+          </div>
+          <div className="form-control md:w-full">
+            <label className="label">
+              <span className="label-text font-extrabold">Details</span>
+            </label>
+            <input
+              type="text"
+              placeholder=""
+              name="details"
+              className="py-8 p-2 rounded-md"
               required
             />
           </div>
@@ -88,18 +119,7 @@ const AddProducts = () => {
               required
             />
           </div>
-          <div className="form-control md:w-full">
-            <label className="label">
-              <span className="label-text font-extrabold">Details</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Details"
-              name="details"
-              className="input input-bordered  "
-              required
-            />
-          </div>
+         
         </div>
         <div className=" md:flex w-full gap-3">
           <div className="form-control md: w-full ">
