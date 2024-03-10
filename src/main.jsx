@@ -10,6 +10,7 @@ import MyCarts from "./Pages/MyCarts.jsx";
 import Login from "./Pages/Login.jsx";
 import Register from "./Pages/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
+import UpdateProducts from "./Pages/UpdateProducts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,16 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=>fetch('http://localhost:5000/product')
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/addProducts",
         element: <AddProducts></AddProducts>,
+      },
+      {
+        path:'/update/:id',
+        element:<UpdateProducts></UpdateProducts>,
+        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
       },
       {
         path: "/myCarts",
@@ -46,8 +52,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
-
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
 );
