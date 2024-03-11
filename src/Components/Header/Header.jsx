@@ -58,7 +58,8 @@ const handleOut=()=>{
        
         <div className="navbar-end">
         { user ? 
-          <button onClick={handleOut} className="btn">SingOut</button> :
+          <button onClick={handleOut} className="btn">SingOut</button>
+          :
          <Link to="/login">
               <a className="btn">Login</a>
             </Link>
