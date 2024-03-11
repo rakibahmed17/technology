@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
-
-    const {createUser}=useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -12,12 +12,30 @@ const Register = () => {
     const email = form.email.value;
     const name = form.name.value;
     const password = form.password.value;
-    const myData = {name, email, password };
+    const myData = { name, email, password };
     console.log(myData);
-    
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        const user = { email };
+        fetch("http://localhost:5000/user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.insertedId) {
+              Swal.fire({
+                title: "Registration SuccessFully !!!",
+                text: "You clicked the button!",
+                icon: "success",
+              });
+            }
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -78,7 +96,10 @@ const Register = () => {
                 <button className="btn btn-primary">Register</button>
               </div>
             </form>
-            <Link className="text-center" to='/login' > Have Already Account? Please <button className="btn btn-link">Login</button>
+            <Link className="text-center" to="/login">
+              {" "}
+              Have Already Account? Please{" "}
+              <button className="btn btn-link">Login</button>
             </Link>
           </div>
         </div>

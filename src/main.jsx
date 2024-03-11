@@ -11,6 +11,7 @@ import Login from "./Pages/Login.jsx";
 import Register from "./Pages/Register.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import UpdateProducts from "./Pages/UpdateProducts.jsx";
+import PrivetRoute from "./Components/PrivetRoute/PrivetRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,17 +27,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/addProducts",
-        element: <AddProducts></AddProducts>,
+        element: <PrivetRoute> <AddProducts></AddProducts> </PrivetRoute>,
       },
       {
-        path:'/update/:id',
-        element:<UpdateProducts></UpdateProducts>,
-        loader:({params})=>fetch(`http://localhost:5000/product/${params.id}`)
+        path: "/update/:id",
+        element: <PrivetRoute><UpdateProducts></UpdateProducts></PrivetRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
       {
         path: "/myCarts",
-        element: <MyCarts></MyCarts>,
+        element: <PrivetRoute><MyCarts></MyCarts></PrivetRoute>,
+        loader: () => fetch(`http://localhost:5000/product`),
       },
+      // {
+      //   path:'/details',
+      //   element:<Details></Details>,
+      //   loader:()=>fetch('http://localhost:5000/product')
+      // },
       {
         path: "/login",
         element: <Login></Login>,

@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
-import logo from '../Header/logo.png.avif'
+import logo from "../Header/logo.png.avif";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user,LogOut } = useContext(AuthContext);
+
+const handleOut=()=>{
+  LogOut()
+  .then()
+  .catch()
+}
+
+
   const links = (
     <div className=" space-x-5 font-extrabold text-white ">
       <Link to="/">Home</Link>
@@ -9,7 +20,6 @@ const Header = () => {
       <Link to="/myCarts">MyCarts</Link>
       <Link to="/register">Register</Link>
       <Link to="/login">Login</Link>
-
     </div>
   );
   return (
@@ -43,14 +53,21 @@ const Header = () => {
           <img className="w-12 rounded-full" src={logo} alt="" />
         </div>
         <div className="navbar-center  hidden lg:flex">
-          <ul className="menu menu-horizontal  px-1">
-            {links}
-            </ul>
+          <ul className="menu menu-horizontal  px-1">{links}</ul>
         </div>
+       
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        { user ? 
+          <button onClick={handleOut} className="btn">SingOut</button> :
+         <Link to="/login">
+              <a className="btn">Login</a>
+            </Link>
+          }
+        
         </div>
+     
       </div>
+  
     </div>
   );
 };
