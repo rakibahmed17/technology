@@ -1,8 +1,10 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* This is very simple project.
+*it has a navbar ,banner, and footer section,
+* its totally Dynamic web App, its all data store in mongodb database.
+*it has some pages ,home page ,add products page ,register and login page.
+it has some dynamic cards in home page  that call api in backEnd mongodb.
+*its complete authentic by firebase .
+* this project deploy vercel and firebase.
