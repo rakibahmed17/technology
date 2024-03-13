@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () => fetch(" https://technology-electronics-server-rose.vercel.app/product"),
       },
       {
         path: "/addProducts",
@@ -33,12 +33,12 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <PrivetRoute><UpdateProducts></UpdateProducts></PrivetRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(` https://technology-electronics-server-rose.vercel.app/${params.id}`),
       },
       {
         path: "/myCarts",
         element: <PrivetRoute><MyCarts></MyCarts></PrivetRoute>,
-        loader: () => fetch(`http://localhost:5000/product`),
+        loader: () => fetch('https://technology-electronics-server-rose.vercel.app'),
       },
       // {
       //   path:'/details',
