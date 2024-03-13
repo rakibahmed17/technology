@@ -11,7 +11,7 @@ const MyCarts = () => {
         <div className="">
      <div className="grid md:grid-cols-3 gap-5 mb-5">
      {
-            cardsData.map(card=>
+            cardsData?.map(card=>
                 <div className="card p-6 bg-base-100 shadow-xl">
                 <figure><img src={card.photo} alt="Shoes" /></figure>
                 <div className="card-body">

@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/myCarts",
         element: <PrivetRoute><MyCarts></MyCarts></PrivetRoute>,
-        loader: () => fetch('https://technology-electronics-server-rose.vercel.app'),
+        loader: () => fetch('https://technology-electronics-server-rose.vercel.app/product'),
       },
       // {
       //   path:'/details',
